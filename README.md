@@ -1,31 +1,17 @@
-# Group based STI activity
 
-You are going to write a single JavaScript file to automatically calculate employee STI (‘short term incentive’ or ‘bonus’) for a company.
+Description
+Hey Everyone!
 
-They are providing you with a few sample arrays that serve as examples of how their data is currently being stored. Each array is like a row in a spreadsheet. There is also one main array named `employees` that stores each of these, much like an entire sheet of one spreadsheet.
+For this challenge, you need to upgrade 'the employee' to be objects rather than just arrays of information. Specifically:
 
-**Each array currently is configured in this way**:
-The first item holds the employees name.
-The second item has their employee number.
-The third item is their annual salary.
-The fourth item is their review rating.
+var arrayAtticus = ["Atticus", "2405", "47000", 3];
+var arrayJem = ["Jem", "62347", "63500", 4];
+var arrayBoo = ["Boo", "11435", "54000", 3];
+var arrayScout = ["Scout", "6243", "74750", 5];
 
-Write a function that consumes one employee array, and returns another array that contains:
-- The first item should also contain the employees name.
-- The second item should contain the percentage of STI the employee is to receive.
-- The third item should be the adjusted annual compensation (base annual + STI)
-- The fourth item should be the employees total bonus rounded to the nearest dollar.
+1. Each employee array should become an instance of an object (probably called something like Person).
 
-To calculate an individuals STI:
-- Those who have a rating of a 2 or below should not receive a bonus.
-- Those who have a rating of a 3 should receive a base bonus of 4% of their base annual income.
-- Those who have a rating of a 4 should receive a base bonus of 6% of their base annual income.
-- Those who have a rating of a 5 should receive a base bonus of 10% of their base annual income.
-- If they have 4 employee numbers, this means they have been with the company for longer than 15 years, 
-and should receive an additional 5%.
-- However, if their annual income is greater than $65,000, they should have their bonus adjusted down 1%. 
-- No bonus can be above 13% total.
+2. This will also mean that you need to adjust the rest of the logic to accept properties rather than array index.
 
-You may abstract out the STI calculation into a second function if you like, but this is not mandatory.
-
-Finally, iterate over the `employees` array and input each index of the array to your first function, and `console.log` the results of each iteration. 
+3. The original employees array that was used to store each person does not need to be converted to an object. Meaning that you can put your new Person objects inside of an array.
+Once you are complete, post to GitHub and submit via this app.
