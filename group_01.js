@@ -1,82 +1,82 @@
-var atticus = ["Atticus", "2405", "47000", 3];
-var jem = ["Jem", "62347", "63500", 4];
-var boo = ["Boo", "11435", "54000", 3];
-var scout = ["Scout", "6243", "74750", 5];
+var Atticus = ["Atticus", "2405", "47000", 3];
+var Jem = ["Jem", "62347", "63500", 4];
+var Boo = ["Boo", "11435", "54000", 3];
+var Scout = ["Scout", "6243", "74750", 5];
+
+
+
+var bonusArray = [];
+// console.log("step 1  bonus array " , bonusArray);
+function Person(empName, empNum, oldPay, rating) {
+    this.empName = empName;
+    this.empNum = empNum;
+    this.oldPay = parseInt(oldPay);
+    this.rating = rating
+}
+
+var atticus = new Person("Atticus" , "2405" , "47000" , 3);
+var jem = new Person("Jem" , "62347" , "63500" , 4);
+var boo = new Person("Boo" , "11435" , "54000" , 3);
+var scout = new Person("Scout" , "6243" , "74750" , 5);
+
 
 var employees = [atticus, jem, boo, scout];
 
-function calculateSTI(empInfo){
-    var name = empInfo[0];
-    var empNumber = empInfo[1];
-    var currentSalary = Math.round(parseFloat(empInfo[2]));
-    var rating = empInfo[3];
+employees.forEach(calc);
 
-    var bonusPercent = 0;
+function calc(name) {
+    var empArray= [];
+    var perBonus = parseInt();
+// console.log("step 2 emparray " , empArray);
+empArray.push(name.empName);
 
-    var processedEmployee = [];
-
-    var bonusMoney = 0;
-
-    var totalSalary = 0;
-
-    switch(rating){
-        case 0:
-        case 1:
-        case 2:
-            bonusPercent = 0;
-            break;
-        case 3:
-            bonusPercent = .04;
-            break;
-        case 4:
-            bonusPercent = .06;
-            break;
-        case 5:
-            bonusPercent = .10;
-            break;
-        default:
-            bonusPercent = 0;
+switch(name.rating) {
+    case 0:
+    case 1:
+    case 2:
+        perBonus = 0;
+    break;
+    case 3:
+         perBonus= .04;
+    break;
+    case 4:
+        perBonus = .06;
+    break;
+    case 5:
+        perBonus = .10;
+    break;
+    default:
+        perBonus= 0;
     }
 
-    bonusPercent = adjustBonusPercent(empNumber, bonusPercent, currentSalary);
-    console.log(bonusPercent);
+        if(name.empNum.length == 4){
+            perBonus += .05;
+        }
 
-    processedEmployee[0] = name;
-    processedEmployee[1] = bonusPercent;
+        else if(name.oldPay > 65000){
+            perBonus-= .01;
+        }
 
-    bonusMoney = Math.round(bonusPercent * currentSalary);
-    totalSalary = bonusMoney + currentSalary;
+        else if( perBonus > .13){
+            perBonus = .13;
+        }
 
-    processedEmployee[2] = totalSalary;
-    processedEmployee[3] = bonusMoney;
+// console.log("step 5 " , perBonus , empArray);
 
-    return processedEmployee;
+var sweetBonus = (perBonus * name.oldPay);
+// console.log(sweetBonus);
 
-}
+var newPay = (sweetBonus + name.oldPay);
+// console.log(newPay);
 
-function adjustBonusPercent(empNumber, bonusPercent, currentSalary){
-    console.log("first parameter check ", bonusPercent)
-    if(empNumber.length == 4){
-        bonusPercent += .05;
-        console.log(bonusPercent);
-    }
 
-    if(currentSalary > 65000){
-        bonusPercent -= .01;
-    }
 
-    if(bonusPercent > .13){
-        bonusPercent = .13;
-    }
-    return bonusPercent;
-}
+empArray[1] = perBonus.toFixed(2);
+empArray[2] = parseInt(newPay.toFixed(2));
+empArray[3] = parseInt(sweetBonus.toFixed(2));
 
-for(var i = 0; i < employees.length ; i++){
-    console.log(calculateSTI(employees[i]));
-}
 
-function Person(name, empId, pay, rate){
-this.PersonName = name;
-this.PersonempId = empId;
-this.PersonRate = rate;
+bonusArray.push(empArray);
+
+console.log(empArray);
 }
